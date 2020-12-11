@@ -1,11 +1,11 @@
 export interface Fruit {
   id   : number
   name : string,
-  size : size,
+  size : Size,
   color: string
 }
 
-enum size {
+enum Size {
   small,
   medium,
   large

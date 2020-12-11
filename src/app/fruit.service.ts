@@ -32,6 +32,13 @@ export class FruitService {
     )
   }
 
+  create(fruit): Observable<Fruit> {
+    return this.http.post<Fruit>(this.apiServer + '/fruits/', JSON.stringify(fruit), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   errorHandler(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

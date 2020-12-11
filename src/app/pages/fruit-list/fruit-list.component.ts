@@ -9,7 +9,7 @@ import { FruitService } from 'src/app/fruit.service';
 })
 export class FruitListComponent implements OnInit {
   fruits : Fruit [];
-  columsToDisplay: string[]  = ["name","size","color","delete"]
+  columsToDisplay: string[]  = ["name","size","color","delete","edit"]
   constructor(public fruitService : FruitService) { }
 
   ngOnInit(): void {
