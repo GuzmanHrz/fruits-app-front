@@ -9,13 +9,26 @@ import { FruitService } from 'src/app/fruit.service';
 })
 export class FruitListComponent implements OnInit {
   fruits : Fruit [];
-  constructor(private fruitService : FruitService) { }
+  columsToDisplay: string[]  = ["name","size","color","delete"]
+  constructor(public fruitService : FruitService) { }
 
   ngOnInit(): void {
     this.fruitService.getAll().subscribe((data: Fruit[])=>{
       this.fruits = data;
     })
+  }
+
+  delete(id) {
+
+    this.fruitService.delete(id).subscribe(() =>{
+      this.fruits = this.fruits.filter(fruit => fruit.id != id)
+    });
 
   }
+
+
+
+
+
 
 }

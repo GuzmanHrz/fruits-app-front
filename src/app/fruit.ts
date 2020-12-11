@@ -1,6 +1,7 @@
 export interface Fruit {
-  name:  string,
-  size:  size,
+  id   : number
+  name : string,
+  size : size,
   color: string
 }
 
