@@ -7,7 +7,9 @@ import { FruitListComponent } from './pages/fruit-list/fruit-list.component';
 
 const routes: Routes = [
   { path: '', component: FruitListComponent},
-  { path: 'create', component: CreateFruitComponent }
+  { path: 'create', component: CreateFruitComponent },
+  { path: 'edit/:id', component: CreateFruitComponent }
+
 ];
 
 @NgModule({

@@ -1,3 +1,27 @@
-.form-group {
-  display: inline;
-}
+
+ .myForm {
+    display: grid;
+    grid-template-columns: [labels] auto [controls] 1fr;
+    grid-auto-flow: row;
+    grid-gap: .8em;
+    background: #eee;
+    padding: 1.2em;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  .myForm > label  {
+    grid-column: labels;
+    grid-row: auto;
+  }
+  .myForm > input,
+  .myForm > textarea,
+  .myForm > button {
+    grid-column: controls;
+    grid-row: auto;
+    border: none;
+    padding: 1em;
+  }
+
+  .myForm > button {
+  background: #3f51b5;
+  color: white;
+  }

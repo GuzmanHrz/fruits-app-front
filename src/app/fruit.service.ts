@@ -39,6 +39,21 @@ export class FruitService {
       )
   }
 
+  edit(fruit, id): Observable<Fruit> {
+    return this.http.put<Fruit>(this.apiServer + '/fruits/' + id, JSON.stringify(fruit), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  getFruit(id: number): Observable<Fruit>{
+    return this.http.get<Fruit>(this.apiServer + '/fruits/'+ id)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+
+  }
+
   errorHandler(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

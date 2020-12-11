@@ -1,4 +1,6 @@
+import { escapeIdentifier } from '@angular/compiler/src/output/abstract_emitter';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Fruit } from 'src/app/fruit';
 import { FruitService } from 'src/app/fruit.service';
 
@@ -10,7 +12,8 @@ import { FruitService } from 'src/app/fruit.service';
 export class FruitListComponent implements OnInit {
   fruits : Fruit [];
   columsToDisplay: string[]  = ["name","size","color","delete","edit"]
-  constructor(public fruitService : FruitService) { }
+  constructor(public fruitService : FruitService,
+              private router: Router,) { }
 
   ngOnInit(): void {
     this.fruitService.getAll().subscribe((data: Fruit[])=>{
@@ -24,6 +27,10 @@ export class FruitListComponent implements OnInit {
       this.fruits = this.fruits.filter(fruit => fruit.id != id)
     });
 
+  }
+
+  edit(id){
+    this.router.navigate(['/edit',id]);
   }
 
 
