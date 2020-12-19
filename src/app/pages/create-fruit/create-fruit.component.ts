@@ -14,6 +14,8 @@ export class CreateFruitComponent implements OnInit {
   fruitForm: FormGroup;
   sizes = ["small", "medium", "large"];
   size;
+  submitForm;
+  fruitId;
 
   constructor(public fb: FormBuilder,
               private router: Router,
@@ -25,7 +27,11 @@ export class CreateFruitComponent implements OnInit {
       const id = +params.get('id');
       if (id) {
         this.getFruit(id);
+        this.submitForm = this.submitEdit
+      }else{
+        this.submitForm = this.submitCreate
       }
+
     })
     this.fruitForm = this.fb.group({
       name:  [''],
@@ -54,10 +60,21 @@ export class CreateFruitComponent implements OnInit {
 
     });
 
+    this.fruitId = fruit.id;
+
   }
-  submitForm() {
+
+
+  submitCreate() {
     this.fruitService.create(this.fruitForm.value).subscribe(res => {
       this.router.navigateByUrl('/')})
+
+  }
+
+  submitEdit() {
+    this.fruitService.edit(this.fruitForm.value,this.fruitId).subscribe(res => {
+      this.router.navigateByUrl('/')
+    })
 
   }
 
